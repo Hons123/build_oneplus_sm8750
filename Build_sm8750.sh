@@ -170,8 +170,8 @@ GIT_EMAIL=$(git config --global user.email || echo "")
 
 if [ -z "$GIT_NAME" ] || [ -z "$GIT_EMAIL" ]; then
     info "Git 未配置，正在设置..."
-    git config --global user.name "Q1udaoyu"
-    git config --global user.email "sucisama2888@gmail.com"
+    git config --global user.name "Hons"
+    git config --global user.email "qq873188428@gmail.com"
 else
     info "Git 已配置："
 fi
@@ -390,7 +390,7 @@ mv oImage Image || error "替换Image失败"
 # 创建AnyKernel3包
 info "创建AnyKernel3包..."
 cd "$WORKSPACE" || error "返回工作目录失败"
-git clone -q https://github.com/showdo/AnyKernel3.git --depth=1 || info "AnyKernel3已存在"
+git clone -q https://github.com/WildKernels/AnyKernel3.git --depth=1 || info "AnyKernel3已存在"
 rm -rf ./AnyKernel3/.git
 rm -f ./AnyKernel3/push.sh
 cp "$KERNEL_WORKSPACE/kernel_platform/common/out/arch/arm64/boot/Image" ./AnyKernel3/ || error "复制Image失败"
