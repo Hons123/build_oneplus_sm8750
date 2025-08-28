@@ -170,7 +170,7 @@ GIT_EMAIL=$(git config --global user.email || echo "")
 
 if [ -z "$GIT_NAME" ] || [ -z "$GIT_EMAIL" ]; then
     info "Git 未配置，正在设置..."
-    git config --global user.name "Hons"
+    git config --global user.name "Hons123"
     git config --global user.email "qq873188428@gmail.com"
 else
     info "Git 已配置："
