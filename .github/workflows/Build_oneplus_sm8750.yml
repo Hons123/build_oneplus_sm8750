@@ -375,15 +375,15 @@ jobs:
           make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" RUSTC=../../prebuilts/rust/linux-x86/1.73.0b/bin/rustc PAHOLE=../../prebuilts/kernel-build-tools/linux-x86/bin/pahole LD=ld.lld HOSTLD=ld.lld O=out KCFLAGS+=-O2  gki_defconfig
           make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" RUSTC=../../prebuilts/rust/linux-x86/1.73.0b/bin/rustc PAHOLE=../../prebuilts/kernel-build-tools/linux-x86/bin/pahole LD=ld.lld HOSTLD=ld.lld O=out KCFLAGS+=-O2  Image
        
-      - name: 📦 Make AnyKernel3 (创建Anykernel3)
+      - name: Make AnyKernel3
         run: |
-          cp "${GITHUB_WORKSPACE}/.github/workflows/Bin/main.bin" ./
-          chmod +x main.bin
-          ./main.bin "make_anykernel3"
-          rm -rf ./main.bin
-          
-      - name: 📤 Upload AnyKernel3 (上传 Anykernel3)
+         git clone https://github.com/Kernel-SU/AnyKernel3.git --depth=1      
+         rm -rf ./AnyKernel3/.git
+         rm -rf ./AnyKernel3/push.sh
+         cp kernel_workspace/kernel_platform/common/out/arch/arm64/boot/Image ./AnyKernel3/
+
+      - name: Upload AnyKernel3
         uses: actions/upload-artifact@v4
         with:
-         name: AK3_${{ env.KSUVER }}_${{ env.DEVICES_NAME }}_SuKiSU
+         name: SuKiSu_${{ env.KSUVER }}_oneplus_pad_2_pro
          path: ./AnyKernel3/*
